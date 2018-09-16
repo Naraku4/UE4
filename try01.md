@@ -1,5 +1,5 @@
-
-插入代码:
+# UE4 C++ 数据类型
+USTRUCT:
 ``` c++
 USTRUCT(BlueprintType)
 struct FData_PageInfo
@@ -22,5 +22,14 @@ struct FData_PageInfo
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "struct_Variants")
         class UChildActorComponent *BackCanvas_Com;
+};
+```
+UENUM:
+```c++
+UENUM()
+enum class GroupActorState : uint8
+{
+    EM_Expand    UMETA(DisplayName = "Expand"),
+    EM_Merge    UMETA(DisplayName = "Merge")
 };
 ```
