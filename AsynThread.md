@@ -16,10 +16,7 @@ std::function<void(int32)> StdThreadFunc = [=](int32 Index)
 		FPlatformProcess::Sleep(1.f);
 	}
 };
-for (int32 i = 0; i < 8; i++)
-{
-	new std::thread(StdThreadFunc, i);
-}
+new std::thread(StdThreadFunc, 0);
 ```
 ## FRunnable
 1. Implement FRunnable
