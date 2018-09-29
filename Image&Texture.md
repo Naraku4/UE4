@@ -1,16 +1,19 @@
 # Image&Texture
 ## Load Data from File
 ### Check File Exist
+```c++
+#include "PlatformFilemanager.h"
+```
 > ```c++
 >FString InFileName;
 >```
 ```c++
-#include "PlatformFilemanager.h"
-```
-```c++
 FPlatformFileManager::Get().GetPlatformFile().FileExists(*InFileName)
 ```
 ### Load Data to TArray from File
+```c++
+#include "FileHelper.h"
+```
 >```c++
 >TArray<uint8> InData;
 >```
@@ -25,13 +28,14 @@ FFileHelper::LoadFileToArray(InData, *InFileName)
 ### Load IImageWrapperModule
 ```c++
 #include "ImageWrapper/Public/IImageWrapperModule.h"
-#include "ImageWrapper/Public/IImageWrapper.h"
 ```
 ```c++
 IImageWrapperModule& ImageWrapperModule = FModuleManager::LoadModuleChecked<IImageWrapperModule>(FName("ImageWrapper"));
 ```
 ### IImageWrapper
-
+```c++
+#include "ImageWrapper/Public/IImageWrapper.h"
+```
 ```c++
 IImageWrapperPtr ImageWrapper = ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);
 ```
@@ -55,14 +59,21 @@ Width = ImageWrapper->GetWidth();
 ## Save
 ```c++
 ImageWrapper->SetRaw(Data->GetData(),Data->Num(),Width,Height,ERGBFormat::RGBA,8)
+```
+>```c++
+>TArray<uint8> InData;
+>```
+```c++
 OutData = ImageWrapper->GetCompressed()
 ```
 ```c++
 #include "FileManagerGeneric.h"
-#include "Paths.h"
 ```
 ```c++
 FFileManagerGeneric::Get().DirectoryExists(*OutFile)
+```
+```c++
+#include "Paths.h"
 ```
 ```c++
 FFileManagerGeneric::Get().MakeDirectory(*FPaths::GetPath(OutFile), true)
