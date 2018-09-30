@@ -37,10 +37,6 @@ IImageWrapperModule& ImageWrapperModule = FModuleManager::LoadModuleChecked<IIma
 #include "ImageWrapper/Public/IImageWrapper.h"
 ```
 ```c++
-IImageWrapperPtr ImageWrapper = ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);
-```
-> Or
-```c++
 TSharedPtr<IImageWrapper> ImageWrapper = ImageWrapperModule.CreateImageWrapper(EImageFormat::PNG);
 ```
 ### Data
